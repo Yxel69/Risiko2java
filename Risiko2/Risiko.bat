@@ -1,0 +1,1 @@
+start \\gymwdc01\BIBLIO_SERVER\BIN\html\Resir
