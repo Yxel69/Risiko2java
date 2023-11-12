@@ -1,6 +1,6 @@
 import java.util.Random;
-public class Starsystem {
-	
+
+ public class Starsystem {
 	
 	Random rand = new Random();
 	
@@ -16,10 +16,16 @@ public class Starsystem {
 		boolean pirates; //are there pirates on the planet?
 		int ownedbyplayer; //value of player/playernumber identifies all planets owned by said player
 	    int galaxynr; //which galaxy the planet is in
-	 		
+	 	
 	 		}
-
-	public static void main(String[] args) {
+  class Wormhole extends Starsystem{
+	  int destination;
+	  
+  }
+	 		
+	 		
+	 		
+  public static void main(String[] args) {
 		
 
 	}

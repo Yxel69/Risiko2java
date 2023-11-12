@@ -9,6 +9,7 @@ public class Fleet {
 		int size; //how many ships in the fleet
 		int xcoord; //x-coordinate in space
 		int ycoord; //y-coordinate in space
+		
 	}
 
 }
