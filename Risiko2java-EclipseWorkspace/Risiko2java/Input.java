@@ -7,14 +7,17 @@ public class Input {
 	}
 
 	
-	public static void main() {
+	public static void main(String[] args) {
 		
+
+	 }
+	public Map DefineUniverse() {
 		Map Universe = new Map(); //declare Universe Map 
 		Universe.gnr = 0; // set galaxyvalue as zero
 		Universe.sysnr = 0; //set number of systems as zero
 		Universe.playernr = 0; //set number of players as zero
 		
-		boolean univselected; //boolean for following while loop
+		boolean univselected = false; //boolean for following while loop
 		
 			while(univselected = false) {  //create Universe parameters
 			
@@ -39,7 +42,10 @@ public class Input {
 			}
 			//create Universe with values from above
 			Universe.CreateMap();
-			
-	 }
+			return Universe;
+	}
+	
+	
+	
 	}
 
