@@ -2,11 +2,12 @@ import java.util.Random;
 
  public class Starsystem {
 	
-	Random rand = new Random();
-	
-	 		public Starsystem() {
+	 		
+			public Starsystem() {
+	 		
+	 	Random rand = new Random();
 	 			
-		double Shield; //0.0 to 0.5x multiplier against attacker in combat
+	    double Shield; //0.0 to 0.5x multiplier against attacker in combat
 		int Ships;	//Number of Ships present in the system
 		int Production; //number of ships produced per round
 		Shield = rand.nextDouble(0,0.5); //assign multiplier value
@@ -24,7 +25,5 @@ import java.util.Random;
   }
 	 		
 	 		
-	 		
+ }	
   
-
-}

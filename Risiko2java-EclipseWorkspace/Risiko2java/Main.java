@@ -1,14 +1,16 @@
 import java.util.Scanner;
 
 public class Main {
-
+Map Universe;
 	public Main() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public static void main(String[] args) {
-		System.out.print("Thank you for playing Risiko2"+"");
-		DefineUniverse();
+		System.out.print("Thank you for playing Risiko2 \n");
+		DefineUniverse(); 
+		
+		
 	}
 	
 	public static Map DefineUniverse() {
@@ -28,12 +30,14 @@ public class Main {
 			
  			System.out.println("Pls Enter the Amount of Players per Galaxy"); //players per galaxy
 			Universe.playernr = scan.nextInt();
+			System.out.print(Universe.sysnr);
+		   
 			
-			Universe.CreateMap();
-			
+		
 			
 			//create Universe with values from above
  			Universe.galaxys = Universe.CreateMap();
+ 			
 			return Universe;
               }
 
