@@ -30,14 +30,33 @@ Map Universe;
 			
  			System.out.println("Pls Enter the Amount of Players per Galaxy"); //players per galaxy
 			Universe.playernr = scan.nextInt();
-			System.out.print(Universe.sysnr);
-		   
-			
-		
-			
+					
 			//create Universe with values from above
- 			Universe.galaxys = Universe.CreateMap();
+			
+			    int gtmp = Universe.gnr;
+			    int systmp = Universe.sysnr;
+
+			    Universe.galaxys = new Galaxy[Universe.gnr];
+
+			    while (gtmp != 0) {
+			        gtmp = gtmp - 1;
+			        Universe.galaxys[gtmp] = new Galaxy();
+			        Universe.galaxys[gtmp].starsystems = new Starsystem[Universe.sysnr];
+		            Universe.galaxys[gtmp].gn = gtmp;
+			        
+			        while (systmp != 0) {
+			            systmp = systmp - 1;
+			            Universe.galaxys[gtmp].starsystems[systmp] = new Starsystem();
+			            Universe.galaxys[gtmp].starsystems[systmp].pn = systmp;
+			            
+			        }
+			        systmp =  Universe.sysnr;
+			    }
+			    
+			   
+			
  			
+ 			System.out.print(Universe.galaxys[0].starsystems[3].pn);
 			return Universe;
               }
 
