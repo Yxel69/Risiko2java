@@ -18,15 +18,15 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		//System.out.print("Thank you for playing Risiko2 \n");
+		System.out.print("Thank you for playing Risiko2 \n");
 		Map Universe = new Map(); //declare Universe Map 
-
+        //variables
 		Universe.gnr = 0; // set galaxy-value as zero
 		Universe.sysnr = 0; //set number of systems as zero
 		Universe.playernr = 0; //set number of players as zero
-		
 		boolean i1 = false;
 		boolean i2 = false;
+		
 	      //create Universe parameters
 		  // Get the default toolkit
 	       Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -53,19 +53,28 @@ public class Main {
 	        panel.add(label); 
 	        panel.add(textField);
 	        panel.add(button);
+	       
+            panel.add(label2);
+	        panel.add(textField2);
+	        panel.add(button2);
 	        
+	     // Make the frame visible
+	        frame.add(panel); //add the panel to the frame
+	        frame.setSize(screenSize); //size frame
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Close the application when the frame is closed
+	        frame.setVisible(true);  
+		
+	       while(i1 && i2 == false) {
 	        button.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	                // Perform an action when the button is clicked
 	            	Universe.gnr = Integer.parseInt(textField.getText());
 	            	boolean i1 = true;
+	            	System.out.print(Universe.gnr);
+	            	System.out.print("i1fault");
 	            }
 	        });
-
-            panel.add(label2);
-	        panel.add(textField2);
-	        panel.add(button2);
 	        
 	        button2.addActionListener(new ActionListener() {
 	            @Override
@@ -73,18 +82,15 @@ public class Main {
 	                // Perform an action when the button is clicked
 	            	Universe.sysnr = Integer.parseInt(textField.getText());
 	            	boolean i2 = true;
+	            	System.out.print("i2fault");
 	            }
 	        });
+	       }
+	       if(i1 && i2 == true) {
+	    	frame.remove(panel);  
+	    	System.out.print("test");
+	       }
 
-	        // Make the frame visible
-	        frame.add(panel); //add the panel to the frame
-	        frame.setSize(screenSize); //size frame
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Close the application when the frame is closed
-	        frame.setVisible(true);  
-	
-	        if(i1 && i2 == true) {
-	        frame.setVisible(false);
-	        }
 	      //Graphical Part assign x and y coordinates 16|9
         	Random rand = new Random(); //random 
         	
@@ -108,6 +114,3 @@ public class Main {
 		
 	}
 }
-	
-
- 
