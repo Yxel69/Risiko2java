@@ -10,9 +10,9 @@ public class Galaxy {
 		int playernr; 
 		Starsystem[] starsystems = new Starsystem[sysnr];
 		
-		
+	}
 		
 	
-	}
+	
 
 }

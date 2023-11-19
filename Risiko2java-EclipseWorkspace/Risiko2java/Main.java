@@ -18,8 +18,18 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
+	
+	Main main = new Main();
+	Map Universe = new Map();
+	
+	Universe  = main.GetParameters();
+			Universe.CreateMap();
+			
+;	}
+		public Map GetParameters() {
 		System.out.print("Thank you for playing Risiko2 \n");
 		Map Universe = new Map(); //declare Universe Map 
+		
         //variables
 		Universe.gnr = 0; // set galaxy-value as zero
 		Universe.sysnr = 0; //set number of systems as zero
@@ -28,6 +38,7 @@ public class Main {
 		boolean i2 = false;
 		
 	      //create Universe parameters
+		
 		  // Get the default toolkit
 	       Toolkit toolkit = Toolkit.getDefaultToolkit();
 	      
@@ -64,7 +75,7 @@ public class Main {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Close the application when the frame is closed
 	        frame.setVisible(true);  
 		
-	       while(i1 && i2 == false) {
+	      
 	        button.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
@@ -73,6 +84,11 @@ public class Main {
 	            	boolean i1 = true;
 	            	System.out.print(Universe.gnr);
 	            	System.out.print("i1fault");
+	            	  if(i1 && i2) {
+	      		    	frame.remove(panel);  
+	      		    	 frame.repaint();
+	      		    	System.out.print("test");
+	      		       }
 	            }
 	        });
 	        
@@ -83,13 +99,17 @@ public class Main {
 	            	Universe.sysnr = Integer.parseInt(textField.getText());
 	            	boolean i2 = true;
 	            	System.out.print("i2fault");
+	            	  if(i1 && i2) {
+	      		    	frame.remove(panel);  
+	      		    	 frame.repaint();
+	      		    	System.out.print("test");
+	      		       }
 	            }
 	        });
-	       }
-	       if(i1 && i2 == true) {
-	    	frame.remove(panel);  
-	    	System.out.print("test");
-	       }
+	        
+	      
+	       
+	       
 
 	      //Graphical Part assign x and y coordinates 16|9
         	Random rand = new Random(); //random 
@@ -110,7 +130,8 @@ public class Main {
 		        }
 		        systmp =  Universe.sysnr;
 		    }
-
+          return Universe;
 		
 	}
+	
 }
