@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class Main {
-
+Map Universe;
 	public Main() {
 		
 	}
@@ -24,6 +24,7 @@ public class Main {
 	
 	Universe  = main.GetParameters();
 			Universe.CreateMap();
+			main.CreateCoordinates()
 			
 ;	}
 		public Map GetParameters() {
@@ -58,7 +59,7 @@ public class Main {
 	       JLabel label2 = new JLabel("Pls Enter the Amount of Planets per Galaxy:");
 	       JTextField textField2 = new JTextField(20);
 	       JButton button2 = new JButton("Submit Planets"); 
-
+	       frame.add(panel); //add the panel to the frame
             panel.setLayout(new GridLayout(0,3)); //set grid layout
             
 	        panel.add(label); 
@@ -70,7 +71,7 @@ public class Main {
 	        panel.add(button2);
 	        
 	     // Make the frame visible
-	        frame.add(panel); //add the panel to the frame
+	        
 	        frame.setSize(screenSize); //size frame
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Close the application when the frame is closed
 	        frame.setVisible(true);  
@@ -81,14 +82,15 @@ public class Main {
 	            public void actionPerformed(ActionEvent e) {
 	                // Perform an action when the button is clicked
 	            	Universe.gnr = Integer.parseInt(textField.getText());
-	            	boolean i1 = true;
-	            	System.out.print(Universe.gnr);
-	            	System.out.print("i1fault");
-	            	  if(i1 && i2) {
-	      		    	frame.remove(panel);  
-	      		    	 frame.repaint();
-	      		    	System.out.print("test");
-	      		       }
+	           
+	            	
+	            	panel.remove(label); 
+	    	        panel.remove(textField);
+	    	        panel.remove(button);
+	    	        panel.revalidate();
+	    	        panel.repaint();
+
+	      		       
 	            }
 	        });
 	        
@@ -97,20 +99,19 @@ public class Main {
 	            public void actionPerformed(ActionEvent e) {
 	                // Perform an action when the button is clicked
 	            	Universe.sysnr = Integer.parseInt(textField.getText());
-	            	boolean i2 = true;
-	            	System.out.print("i2fault");
-	            	  if(i1 && i2) {
-	      		    	frame.remove(panel);  
-	      		    	 frame.repaint();
-	      		    	System.out.print("test");
-	      		       }
+	            	
+	            	panel.remove(label2); 
+	    	        panel.remove(textField2);
+	    	        panel.remove(button2);
+	    	        panel.revalidate();
+	    	        panel.repaint();
+
 	            }
 	        });
-	        
-	      
+	        return Universe;
+		}
 	       
-	       
-
+	  public void CreateCoordinates() {
 	      //Graphical Part assign x and y coordinates 16|9
         	Random rand = new Random(); //random 
         	
@@ -130,7 +131,8 @@ public class Main {
 		        }
 		        systmp =  Universe.sysnr;
 		    }
-          return Universe;
+		    System.out.print("ye ye ass");
+         
 		
 	}
 	
