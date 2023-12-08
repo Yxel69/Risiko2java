@@ -63,7 +63,9 @@ Map Universe;
 	       JLabel label2 = new JLabel("Pls Enter the Amount of Planets per Galaxy:");
 	       JTextField textField2 = new JTextField(20);
 	       JButton button2 = new JButton("Submit Planets"); 
-	        
+	       //Create the last Precreation Input
+	       JLabel label3 = new JLabel("Please press Enter to create the World");
+	       
 	        frame.add(panel); //add the panel to the frame
 	        SpringLayout layout = new SpringLayout();
             panel.setLayout(layout); //set grid layout
@@ -72,9 +74,7 @@ Map Universe;
 	        panel.add(textField);
 	        panel.add(button);
 	       
-            panel.add(label2);
-	        panel.add(textField2);
-	        panel.add(button2);
+	        
 	        
 	        //set Sizes
 	        frame.setSize(screenSize); //size frame
@@ -91,46 +91,106 @@ Map Universe;
 	        layout.putConstraint(SpringLayout.WEST, button2, 0, SpringLayout.WEST, panel);
 	        layout.putConstraint(SpringLayout.EAST, button2, 0, SpringLayout.EAST, panel);
 	        
-            //Set constrains for 
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	     // Make the frame visible
-	        
+            //Set constrains for textField relative to  button and panel
 	       
+	        layout.putConstraint(SpringLayout.SOUTH, textField, 0, SpringLayout.NORTH, button);
+	        layout.putConstraint(SpringLayout.WEST, textField, 0, SpringLayout.WEST, button);
+	        layout.putConstraint(SpringLayout.EAST, textField, 0, SpringLayout.EAST, button);
+	        
+	        //center textinput inside the textfield
+	        
+	        textField.setHorizontalAlignment(SwingConstants.CENTER);
+	        
+	        //Set constrains for textField2 relative to  button2 and panel
+		       
+	        layout.putConstraint(SpringLayout.SOUTH, textField2, 0, SpringLayout.NORTH, button2);
+	        layout.putConstraint(SpringLayout.WEST, textField2, 0, SpringLayout.WEST, button2);
+	        layout.putConstraint(SpringLayout.EAST, textField2, 0, SpringLayout.EAST, button2);
+	        
+	        //center textinput inside the textfield2
+	        
+	        textField2.setHorizontalAlignment(SwingConstants.CENTER);
+	        
+	        //Set constrains for label relative to  textField and panel
+		       
+	        layout.putConstraint(SpringLayout.SOUTH,label, 0, SpringLayout.NORTH,textField);
+	        layout.putConstraint(SpringLayout.WEST, label, 0, SpringLayout.WEST, textField);
+	        layout.putConstraint(SpringLayout.EAST, label, 0, SpringLayout.EAST, textField);
+	        
+	        //Center text inside  label
+	        label.setHorizontalAlignment(SwingConstants.CENTER);
+	        
+	        //Set constrains for label2 relative to  textField2 and panel
+		       
+	        layout.putConstraint(SpringLayout.SOUTH,label2, 0, SpringLayout.NORTH,textField2);
+	        layout.putConstraint(SpringLayout.WEST, label2, 0, SpringLayout.WEST, textField2);
+	        layout.putConstraint(SpringLayout.EAST, label2, 0, SpringLayout.EAST, textField2);
+	        
+	        //Center text inside  label2
+	        label2.setHorizontalAlignment(SwingConstants.CENTER);
+	        
+	        //Center text inside the label3
+	        label2.setHorizontalAlignment(SwingConstants.CENTER);
+	        
+	         // Make the frame visible
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Close the application when the frame is closed
 	        frame.setVisible(true);  
 	        
 	        //add ActionListener
 	        
-	        panel.addKeyListener(new KeyListener() {
+	        textField.addKeyListener(new KeyListener() {
 	            @Override
-	            public void keyTyped(KeyEvent e) {
-	            	 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-		               	   System.out.print("boop");
+	            public void keyPressed(KeyEvent e) {
+	            	 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+	            		 Universe.gnr = Integer.parseInt(textField.getText());
+	      	           
+	 	            	
+	 	            	panel.remove(label); 
+	 	    	        panel.remove(textField);
+	 	    	        panel.remove(button);
+	 	    	        panel.add(label2);
+	 	    	        panel.add(textField2);
+	 	    	        panel.add(button2);
+	 	    	        panel.revalidate();
+	 	    	        panel.repaint();
 		                
 		           }
 	           }
 
 	            @Override
+	            public void keyTyped(KeyEvent e) {
+	               
+	               }
+
+	           @Override
+	           public void keyReleased(KeyEvent e) {
+	               // Not used in this example
+	           }
+	           
+	        });
+	        textField2.addKeyListener(new KeyListener() {
+	            @Override
 	            public void keyPressed(KeyEvent e) {
+	            	 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+	            		 
+	            		  // Perform an action when the button is clicked
+	 	            	Universe.sysnr = Integer.parseInt(textField.getText());
+	 	            	
+	 	            	panel.remove(label2); 
+	 	    	        panel.remove(textField2);
+	 	    	        panel.remove(button2);
+	 	    	        panel.add(label3);
+	 	    	        panel.revalidate();
+	 	    	        panel.repaint();
+
+	     	      		       
+	     	            
+		                
+		           }
+	           }
+
+	            @Override
+	            public void keyTyped(KeyEvent e) {
 	               
 	               }
 
@@ -151,6 +211,9 @@ Map Universe;
 	            	panel.remove(label); 
 	    	        panel.remove(textField);
 	    	        panel.remove(button);
+	    	        panel.add(label2);
+	    	        panel.add(textField2);
+	    	        panel.add(button2);
 	    	        panel.revalidate();
 	    	        panel.repaint();
 
@@ -167,8 +230,10 @@ Map Universe;
 	            	panel.remove(label2); 
 	    	        panel.remove(textField2);
 	    	        panel.remove(button2);
+	    	        panel.add(label3);
 	    	        panel.revalidate();
 	    	        panel.repaint();
+	    	        
 
 	            }
 	        });
