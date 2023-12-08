@@ -25,11 +25,13 @@ Map Universe;
 	Map Universe = new Map();
 	
 	Universe  = main.GetParameters();
-			Universe.CreateMap();
-			main.CreateCoordinates()
-			
+	if(Universe != null) {
+	Universe.CreateMap();
+	main.CreateCoordinates();
+	}
 ;	}
-		@SuppressWarnings("static-access")
+		
+		
 		public Map GetParameters() {
 		System.out.print("Thank you for playing Risiko2 \n");
 		Map Universe = new Map(); //declare Universe Map 
@@ -38,9 +40,6 @@ Map Universe;
 		Universe.gnr = 0; // set galaxy-value as zero
 		Universe.sysnr = 0; //set number of systems as zero
 		Universe.playernr = 0; //set number of players as zero
-		boolean i1 = false;
-		boolean i2 = false;
-		
 	      //create Universe parameters
 		
 		  // Get the default toolkit
@@ -50,7 +49,7 @@ Map Universe;
 	       Dimension screenSize = toolkit.getScreenSize();
 	       
 	  	  // Create a JFrame (window)
-	       JFrame frame = new JFrame("Risiko2");
+	       JFrame frame = new JFrame("Risiko2Create");
 	       
 	       
 	      //Create a JPanel
@@ -63,18 +62,18 @@ Map Universe;
 	       JLabel label2 = new JLabel("Pls Enter the Amount of Planets per Galaxy:");
 	       JTextField textField2 = new JTextField(20);
 	       JButton button2 = new JButton("Submit Planets"); 
-	       //Create the last Precreation Input
-	       JLabel label3 = new JLabel("Please press Enter to create the World");
+	       //Create the last PreCreation Input
+		   JButton button3 = new JButton("Please press the Button to create the World");
+	       
+	       
 	       
 	        frame.add(panel); //add the panel to the frame
 	        SpringLayout layout = new SpringLayout();
-            panel.setLayout(layout); //set grid layout
+            panel.setLayout(layout); //set SpringLayout
             
 	        panel.add(label); 
 	        panel.add(textField);
 	        panel.add(button);
-	       
-	        
 	        
 	        //set Sizes
 	        frame.setSize(screenSize); //size frame
@@ -129,10 +128,16 @@ Map Universe;
 	        //Center text inside  label2
 	        label2.setHorizontalAlignment(SwingConstants.CENTER);
 	        
-	        //Center text inside the label3
-	        label2.setHorizontalAlignment(SwingConstants.CENTER);
+	        //Set Constrains for label3 relative to panel
+		    layout.putConstraint(SpringLayout.NORTH,button3,0,SpringLayout.NORTH,panel);
+		    layout.putConstraint(SpringLayout.WEST, button3,0,SpringLayout.WEST, panel);
+		    layout.putConstraint(SpringLayout.EAST, button3,0,SpringLayout.EAST, panel);
+		    layout.putConstraint(SpringLayout.SOUTH,button3,0,SpringLayout.SOUTH,panel);
+		       
+		    //Center text inside button3
+		    button3.setHorizontalAlignment(SwingConstants.CENTER);
 	        
-	         // Make the frame visible
+	        // Make the frame visible
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Close the application when the frame is closed
 	        frame.setVisible(true);  
 	        
@@ -167,19 +172,38 @@ Map Universe;
 	               // Not used in this example
 	           }
 	           
-	        });
-	        textField2.addKeyListener(new KeyListener() {
+	        }); 
+	        button.addActionListener(new ActionListener() {
 	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                // Perform an action when the button is clicked
+	            	Universe.gnr = Integer.parseInt(textField.getText());
+	           
+	            	
+	            	panel.remove(label); 
+	    	        panel.remove(textField);
+	    	        panel.remove(button);
+	    	        panel.add(label2);
+	    	        panel.add(textField2);
+	    	        panel.add(button2);
+	    	        panel.revalidate();
+	    	        panel.repaint();
+
+	                
+	            }
+	        });
+	        
+	        textField2.addKeyListener(new KeyListener() {
+	        @Override
 	            public void keyPressed(KeyEvent e) {
 	            	 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-	            		 
-	            		  // Perform an action when the button is clicked
+                // Perform an action when the button is clicked
 	 	            	Universe.sysnr = Integer.parseInt(textField.getText());
 	 	            	
 	 	            	panel.remove(label2); 
 	 	    	        panel.remove(textField2);
 	 	    	        panel.remove(button2);
-	 	    	        panel.add(label3);
+	 	    	        panel.add(button3);
 	 	    	        panel.revalidate();
 	 	    	        panel.repaint();
 
@@ -201,25 +225,7 @@ Map Universe;
 	        });
 	       
 	        
-	        button.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	                // Perform an action when the button is clicked
-	            	Universe.gnr = Integer.parseInt(textField.getText());
-	           
-	            	
-	            	panel.remove(label); 
-	    	        panel.remove(textField);
-	    	        panel.remove(button);
-	    	        panel.add(label2);
-	    	        panel.add(textField2);
-	    	        panel.add(button2);
-	    	        panel.revalidate();
-	    	        panel.repaint();
-
-	      		       
-	            }
-	        });
+	       
 	        
 	        button2.addActionListener(new ActionListener() {
 	            @Override
@@ -230,13 +236,36 @@ Map Universe;
 	            	panel.remove(label2); 
 	    	        panel.remove(textField2);
 	    	        panel.remove(button2);
-	    	        panel.add(label3);
+	    	        panel.add(button3);
 	    	        panel.revalidate();
 	    	        panel.repaint();
 	    	        
 
 	            }
 	        });
+	        
+		        
+	        button3.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                // Perform an action when the button is clicked
+
+	    	        panel.remove(button3);
+	    	        panel.revalidate();
+	    	        panel.repaint();
+	    	        frame.dispose();
+
+	            }
+	        });
+	        
+	        
+	        
+	        
+	        
+	        
+	      
+	        
+	       
 	        return Universe;
 	        
 		}
