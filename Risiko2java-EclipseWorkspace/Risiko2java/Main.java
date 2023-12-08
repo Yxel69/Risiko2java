@@ -1,8 +1,5 @@
-import java.util.Scanner;
 import java.util.Random;
 import java.awt.*;
-
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,11 +22,9 @@ Map Universe;
 	Map Universe = new Map();
 	
 	Universe  = main.GetParameters();
-	if(Universe != null) {
-	Universe.CreateMap();
+	
 	main.CreateCoordinates();
-	}
-;	}
+	Universe.CreateMap();	}
 		
 		
 		public Map GetParameters() {
@@ -257,15 +252,6 @@ Map Universe;
 
 	            }
 	        });
-	        
-	        
-	        
-	        
-	        
-	        
-	      
-	        
-	       
 	        return Universe;
 	        
 		}
@@ -283,16 +269,16 @@ Map Universe;
 		        gtmp = gtmp - 1;
 		        while (systmp != 0) {
 		            systmp = systmp - 1;
-		            Universe.galaxys[gtmp].starsystems[systmp].x = rand.nextInt(0,178); //aspect ratio 16
-		            Universe.galaxys[gtmp].starsystems[systmp].y = rand.nextInt(0,100);// to 9
+		            Universe.galaxys[gtmp].starsystems[systmp].x = rand.nextInt(0,1920); //aspect ratio 16
+		            Universe.galaxys[gtmp].starsystems[systmp].y = rand.nextInt(0,1080);// to 9
 		            Universe.galaxys[gtmp].starsystems[systmp].pn = systmp;
-
-		        }
+                    System.out.print(""+Universe.galaxys[gtmp].starsystems[systmp].x+""+Universe.galaxys[gtmp].starsystems[systmp].y+"");		        
 		        systmp =  Universe.sysnr;
 		    }
+		    }
+		    
 		    System.out.print("ye ye ass");
          
 		
 	}
-	
 }
